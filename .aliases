@@ -1,0 +1,85 @@
+#!/bin/csh -f
+#
+# $Id: .aliases,v 1.31 1999/12/30 21:44:30 gewax Exp $
+#
+# CAD user .aliases file for Solaris
+#-------------------------------------------------------------------
+#
+# This file contains both site and personal customizations
+#
+#-------------------------------------------------------------------
+# Stop here if not an interactive shell
+# Place any commands for both batch and interactive execution 
+# before this.
+#-------------------------------------------------------------------
+
+#-------------------------------------------------------------------
+#    Who's Who
+#-------------------------------------------------------------------
+alias addr  "ypcat -k aliases | grep -i \!*"
+alias addrp "ypcat -k passwd  | grep -i \!*"
+
+#-------------------------------------------------------------------
+# General
+#-------------------------------------------------------------------
+
+# different ways to show location 
+#alias cd 'cd \!* ;set prompt = "\! $cwd> "'
+#alias cd 'cd \!* ; $cwd'
+#alias cd 'chdir \!* ;set prompt = "#\! `hostname`:`pwd`> "'
+# note this next example requires the sp alias defined above
+#alias cd 'chdir \!* ;set prompt = "#\! `hostname`_`sp`>"' 
+
+#-------------------------------------------------------------------
+
+set autolist
+
+alias va       'vim ~/.aliases'
+
+alias vncstart     'vncserver -geometry 1200x800 -depth 24 -alwaysshared -nolisten local' 
+alias vnckill      'vncserver -kill :1'
+
+# Company specific
+
+alias cvs-wasp      'source ~/setup/Setup_waspb.cvs; \
+                     cd $CVSHOME; \
+                     echo "Change Directory: `pwd`";'
+
+alias cd_wasp       'cd /design/micro/mq67/users/$user; \
+                     echo "Change Directory: `pwd`";'
+
+
+alias sftpc         'sftp cosllog001.maxim-ic.com'
+alias sshc          'ssh -Y cosllog001.maxim-ic.com'
+
+# ------------------------------------------------
+#
+# CSH Notes:
+#
+# 1) 
+# If you actually want to use the value of a variable at the time the alias is defined rather than
+#  at the time it's used (uncommon but possible), then double quotes are the way to go. 
+#
+#
+# 2)
+# csh records the command you typed in its history before expanding aliases, 
+#  so you can use the history substitution features to find out what the arguments were to the latest command.
+#
+# !! is the whole command line 
+# !* is all the arguments of the command 
+# !:1 is the first argument of the command 
+# !:2 is the second argument of the command 
+# !$ is the last argument of the command 
+#
+# So let's try 
+# alias friend grep !:1 ~/friends
+#
+# Unfortunately, this doesn't work, because the shell recognizes "!:1" as a history reference before it 
+#  executes the alias command; in other words, this takes the first argument of whatever command was
+#  executed just before the alias, and defines friend to always search for that word! 
+#
+# So we need a way to tell the shell not to try "!:1" as a history reference. As is so often the case in Unix, we do this with a backslash: 
+#
+# alias friend grep \!:1 ~/friends
+#
+
