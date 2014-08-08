@@ -50,7 +50,9 @@ set backspace=indent,eol,start  "backspace over everything
 " -----------------------------------------------------------------------------
 " mouse support (normal mode)
 " -----------------------------------------------------------------------------
-set mouse=n
+if has('mouse')
+   set mouse=n
+endif
 
 " -----------------------------------------------------------------------------
 " clipboard support
