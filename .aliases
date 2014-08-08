@@ -36,7 +36,10 @@ set autolist
 
 alias va       'vim ~/.aliases'
 
-alias vncstart     'vncserver -geometry 1200x800 -depth 24 -alwaysshared -nolisten local' 
+alias vncstart  'vncserver -geometry 3820x1000 -depth 24 -alwaysshared -nolisten local' 
+alias vncstart_sam 'vncserver -geometry 1920x1080 -depth 24 -alwaysshared -nolisten local' 
+alias vncstart_len 'vncserver -geometry 1366x700 -depth 24 -alwaysshared -nolisten local' 
+alias vncstart_mac 'vncserver -geometry 1680x950 -depth 24 -alwaysshared -nolisten local'
 alias vnckill      'vncserver -kill :1'
 
 # Company specific
@@ -48,9 +51,12 @@ alias cvs-wasp      'source ~/setup/Setup_waspb.cvs; \
 alias cd_wasp       'cd /design/micro/mq67/users/$user; \
                      echo "Change Directory: `pwd`";'
 
+alias cd_nimitz       'cd /design/micro/me02/users/$user; \
+                     echo "Change Directory: `pwd`";'
 
 alias sftpc         'sftp cosllog001.maxim-ic.com'
 alias sshc          'ssh -Y cosllog001.maxim-ic.com'
+alias sshd          'ssh -Y dallras609'
 
 # ------------------------------------------------
 #

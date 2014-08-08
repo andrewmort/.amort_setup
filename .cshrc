@@ -45,3 +45,6 @@ if ( -f ~/.aliases ) source ~/.aliases
 # If ssh to linux box, you only get one hour if the following is not set.
 set autologout=0
 
+setenv CDS_LOG_VERSION sequential
+
+source /design/micro/misc/bin/setup/production.csh

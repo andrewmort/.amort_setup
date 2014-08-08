@@ -48,9 +48,9 @@ set backspace=indent,eol,start  "backspace over everything
 
 
 " -----------------------------------------------------------------------------
-" mouse support
+" mouse support (normal mode)
 " -----------------------------------------------------------------------------
-"set mouse=a
+set mouse=n
 
 " -----------------------------------------------------------------------------
 " clipboard support
