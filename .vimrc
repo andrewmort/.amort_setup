@@ -1,12 +1,18 @@
 imap jj <esc>
-set ts=3
+set ts=4
 set ai
-set tabstop=3
-set shiftwidth=3
+set tabstop=4
+set shiftwidth=4
 set expandtab
-set softtabstop=3
+set softtabstop=4
 set smartindent
 set ruler
+
+" -----------------------------------------------------------------------------
+" Highlight column number 80
+" -----------------------------------------------------------------------------
+set colorcolumn=80
+highlight ColorColumn ctermbg=black
 
 " -----------------------------------------------------------------------------
 " syntax, highlighting and spelling
@@ -21,7 +27,8 @@ set background=dark
 set nostartofline    " keep cursor in same column for long-range motion cmds
 set incsearch        " Highlight pattern matches as you type
 set ignorecase       " ignore case when using a search pattern
-set smartcase        " override 'ignorecase' when pattern has upper case character
+set smartcase        " override 'ignorecase' when pattern has upper case char
+set hlsearch         " Highlight all matches for pattern
 
 " -----------------------------------------------------------------------------
 " displaying text
@@ -29,7 +36,6 @@ set smartcase        " override 'ignorecase' when pattern has upper case charact
 set scrolloff=2         " number of screen lines to show around the cursor
 set linebreak           " For lines longer than the window, wrap intelligently. 
                         " This doesn't insert hard line breaks.
-			" string to put before wrapped screen lines
 set sidescrolloff=2     " min # of columns to keep left/right of cursor
 set display+=lastline   " show last line, even if it doesn't fit in the window
 set cmdheight=1         " # of lines for the command window
@@ -40,18 +46,23 @@ set cmdheight=1         " # of lines for the command window
 " -----------------------------------------------------------------------------
 set ruler      " display current cursor position in status bar
 
+" -----------------------------------------------------------------------------
+" no alerts on errors
+" -----------------------------------------------------------------------------
+set noerrorbells
+set novisualbell
+set timeoutlen=500
 
 " -----------------------------------------------------------------------------
 " editing text
 " -----------------------------------------------------------------------------
 set backspace=indent,eol,start  "backspace over everything
 
-
 " -----------------------------------------------------------------------------
 " mouse support (normal mode)
 " -----------------------------------------------------------------------------
 if has('mouse')
-   set mouse=n
+   set mouse=a
 endif
 
 " -----------------------------------------------------------------------------
@@ -87,3 +98,12 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+" Allow persisted undo across sessions if available
+if has("persistent_undo")
+    set undodir=~/.vim/undodir
+    set undofile
+endif
+
+" Reload changes to .vimrc automatically
+autocmd BufWritePost  ~/.vimrc source ~/.vimrc
